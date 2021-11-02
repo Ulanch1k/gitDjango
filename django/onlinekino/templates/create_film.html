@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create Film</title>
+</head>
+<body>
+{% for film in films %}
+	<div>
+	<p> Название: {{ film.title }}</p>
+	<p>Описание: {{ film.description }}</p>
+	<p>Рейтинг: {{ film.rating }}</p>
+		<br>
+	</div>
+{% endfor %}
+
+{#<form id="form" action="{% url 'created' %}" method="post">#}
+{#	{% csrf_token %}#}
+{#	<input name = 'title' type="text">#}
+{#	<input name = 'description' type="text">#}
+{#	<input name = 'rating' type="number">#}
+{#	<input type="submit" id="sbm">#}
+{#</form>#}
+</body>
+</html>
