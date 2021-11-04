@@ -8,6 +8,8 @@ from rest_framework import status
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import GenericAPIView
 from django.views.generic import TemplateView
+from django.db.models import Count
+
 
 
 from .serializers import MovieSerializer, MovieDetailSerializer
@@ -45,7 +47,9 @@ class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, Up
 
 
 def IndexView(request):
-    return render(request, "index.html")
+    data = Movie.objects.aggregate(count=Count('id'))
+    print(data)
+    return render(request, 'index.html', {'data': data})
 
 
 def DailyKino(request):
