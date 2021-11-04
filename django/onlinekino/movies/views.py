@@ -32,16 +32,16 @@ class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, Up
     permission_classes = (AllowAny, )
 
     def get(self, request, pk):
-        return super(MoviesDetailView, self).retrieve(request, pk)
+        return super().retrieve(request, pk)
 
     def delete(self, request, pk):
-        return super(MoviesDetailView, self).destroy(request, pk)
+        return super().destroy(request, pk)
 
     def put(self, request, pk):
-        return super(MoviesDetailView, self).update(request, pk)
+        return super().update(request, pk)
 
     def patch(self, request, pk):
-        return super(MoviesDetailView, self).partial_update(request, pk)
+        return super().partial_update(request, pk)
 
 
 def IndexView(request):
