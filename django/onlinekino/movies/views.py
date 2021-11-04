@@ -24,7 +24,7 @@ class MovieView(GenericAPIView, ListModelMixin, CreateModelMixin):
         return super().list(request)
 
     def post(self, request):
-        return super(MovieView, self).create(request)
+        return super().create(request)
 
 class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin):
     queryset = Movie.objects.all()
@@ -44,5 +44,12 @@ class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, Up
         return super(MoviesDetailView, self).partial_update(request, pk)
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
+def IndexView(request):
+    return render(request, "index.html")
+
+
+def DailyKino(request):
+    return render(request, "daykino.html")
+
+def createMovie(request):
+    return render(request, "create_film.html")
