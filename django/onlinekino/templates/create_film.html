@@ -5,21 +5,99 @@
 	<title>Create Film</title>
 </head>
 <body>
-{% for film in Movies %}
-	<div>
-	<p> Название: {{ film.title }}</p>
-	<p>Описание: {{ film.description }}</p>
-	<p>Рейтинг: {{ film.rating }}</p>
-		<br>
-	</div>
-{% endfor %}
+<div>
+	<input type="text" id="txt1" placeholder="Название фильма"> <br><br>
+	<textarea id="txt2" cols="30" rows="10"></textarea> <br><br>
+	<input type="number" id="date" placeholder="Дата релиза ГГГГ-MM-DD"> <br><br>
+	<input type="text" id="num" placeholder="Рейтинг"> <br><br>
+	<input type="text" id="genres" placeholder="Жанры"> <br><br>
+	<input type="submit" id="sbm">
+</div>
+<div>
+	<h1>Последний загруженный фильм</h1>
+	<p>Название</p>
+	<h2><span id="load_title"> </span></h2>
+	<p>Описание</p>
+	<h2><span id="load_des"> </span></h2>
+	<p>Рейтинг</p>
+	<h2><span id="load_rating"> </span></h2>
+	<p>Дата релиза</p>
+	<h2><span id="load_release"> </span></h2>
+	<p>Жанры</p>
+	<h2><span id="load_genres"> </span></h2>
+</div>
 
-{#<form id="form" action="{% url 'created' %}" method="post">#}
-{#	{% csrf_token %}#}
-{#	<input name = 'title' type="text">#}
-{#	<input name = 'description' type="text">#}
-{#	<input name = 'rating' type="number">#}
-{#	<input type="submit" id="sbm">#}
-{#</form>#}
+	<script>
+		function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+		let send_data = document.getElementById('sbm');
+        send_data.addEventListener('click', function (){
+            console.log('Начало')
+			let title = document.getElementById('txt1').value;
+			let description = document.getElementById('txt2').value;
+			let rating = document.getElementById('num').value;
+			let genre = document.getElementById('genres').value;
+			let date = document.getElementById('date').value;
+			const url = 'http://127.0.0.1:8000/api/movies/';
+            let headers = {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            };
+            let body = {
+				'title': title,
+	            'description': description,
+	            'rating': rating,
+	            'load_release': release_date,
+	            'genres': genre
+            };
+            let options = {
+                method: 'POST',
+	            headers: headers,
+	            body: JSON.stringify(body)
+            };
+            fetch(url, options).then(
+                response => {
+                    if (response.ok){
+                        alert('Фильм в базе данных');
+                    }
+                }
+            )
+	        document.location.reload()
+        });
+        window.addEventListener('load', function () {
+              const url = 'http://127.0.0.1:8000/api/movies/';
+              let headers = {
+                  'Content-Type': 'application/json'
+              }
+              let option = {
+                  method: 'GET',
+                  headers: headers
+              };
+              fetch(url, option)
+                  .then(response => response.json())
+                  .then(result => {
+                      console.log(result)
+	                  document.getElementById('load_title').innerText = result[result.length - 1].title
+	                  document.getElementById('load_des').innerText = result[result.length - 1].description
+	                  document.getElementById('load_rating').innerText = result[result.length - 1].rating
+	                  document.getElementById('load_release').innerText = result[result.length - 1].release_date
+	                  document.getElementById('load_genres').innerText = result[result.length - 1].genre
+                  })
+          })
+	</script>
 </body>
 </html>

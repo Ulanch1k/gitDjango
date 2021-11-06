@@ -62,7 +62,6 @@
           <div class="col-5 my-2">
             <p class="fs-4">
              <b id="movie_name"></b>
-	            <button id="get_data">Загрузить фильм</button>
             </p>
             <span id="description_movie"></span>
          <div>
@@ -140,8 +139,7 @@
         </table>
       </footer>
       <script>
-	      let get_data = document.getElementById('get_data');
-          get_data.addEventListener('click', function () {
+          window.addEventListener('load', function () {
               const url = 'http://127.0.0.1:8000/api/movies/';
               let headers = {
                   'Content-Type': 'application/json'
