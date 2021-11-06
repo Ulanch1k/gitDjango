@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from rest_framework.permissions import AllowAny
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import GenericAPIView
 from django.db.models import Count
@@ -15,6 +16,9 @@ from .serializers import MovieSerializer, MovieDetailSerializer
 from .models import Movie
 
 # Create your views here.
+
+
+
 
 class MovieView(GenericAPIView, ListModelMixin, CreateModelMixin):
     queryset = Movie.objects.all()
@@ -56,3 +60,7 @@ def daily_kino(request):
 
 def create_movie(request):
     return render(request, "create_film.html")
+
+def my_account(request):
+    return render(request, "MyAccount.html")
+
