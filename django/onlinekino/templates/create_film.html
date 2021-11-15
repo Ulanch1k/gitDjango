@@ -8,9 +8,7 @@
 <div>
 	<input type="text" id="txt1" placeholder="Название фильма"> <br><br>
 	<textarea id="txt2" cols="30" rows="10"></textarea> <br><br>
-	<input type="number" id="date" placeholder="Дата релиза ГГГГ-MM-DD"> <br><br>
 	<input type="text" id="num" placeholder="Рейтинг"> <br><br>
-	<input type="text" id="genres" placeholder="Жанры"> <br><br>
 	<input type="submit" id="sbm">
 </div>
 <div>
@@ -50,8 +48,7 @@
 			let title = document.getElementById('txt1').value;
 			let description = document.getElementById('txt2').value;
 			let rating = document.getElementById('num').value;
-			let genre = document.getElementById('genres').value;
-			let date = document.getElementById('date').value;
+            let release_date = document.getElementById('release_date').value;
 			const url = 'http://127.0.0.1:8000/api/movies/';
             let headers = {
                 'Content-Type': 'application/json',
@@ -61,8 +58,7 @@
 				'title': title,
 	            'description': description,
 	            'rating': rating,
-	            'load_release': release_date,
-	            'genres': genre
+	            'release_date': release_date
             };
             let options = {
                 method: 'POST',
@@ -76,7 +72,6 @@
                     }
                 }
             )
-	        document.location.reload()
         });
         window.addEventListener('load', function () {
               const url = 'http://127.0.0.1:8000/api/movies/';
@@ -95,7 +90,6 @@
 	                  document.getElementById('load_des').innerText = result[result.length - 1].description
 	                  document.getElementById('load_rating').innerText = result[result.length - 1].rating
 	                  document.getElementById('load_release').innerText = result[result.length - 1].release_date
-	                  document.getElementById('load_genres').innerText = result[result.length - 1].genre
                   })
           })
 	</script>
