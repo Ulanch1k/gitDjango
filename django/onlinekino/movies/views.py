@@ -12,12 +12,40 @@ from django.db.models import Count
 
 
 
-from .serializers import MovieSerializer, MovieDetailSerializer
-from .models import Movie
+from .serializers import MovieSerializer, MovieDetailSerializer, GenreSerializer
+from .models import Movie, Genre
 
 # Create your views here.
 
 
+class GenreView(GenericAPIView, ListModelMixin, CreateModelMixin, DestroyModelMixin):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = (AllowAny, )
+
+    def get(self, request):
+        return super().list(request)
+
+    def post(self, request):
+        return super().create(request)
+
+
+class GenreDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = (AllowAny, )
+
+    def get(self, request, pk):
+        return super().retrieve(request, pk)
+
+    def delete(self, request, pk):
+        return super().destroy(request, pk)
+
+    def put(self, request, pk):
+        return super().update(request, pk)
+
+    def patch(self, request, pk):
+        return super().partial_update(request, pk)
 
 
 class MovieView(GenericAPIView, ListModelMixin, CreateModelMixin):
@@ -30,6 +58,8 @@ class MovieView(GenericAPIView, ListModelMixin, CreateModelMixin):
 
     def post(self, request):
         return super().create(request)
+
+
 
 class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin):
     queryset = Movie.objects.all()
@@ -49,11 +79,19 @@ class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, Up
         return super().partial_update(request, pk)
 
 
-def index_view(request):
-    data = Movie.objects.aggregate(count=Count('id'))
-    print(data)
-    return render(request, 'index.html', {'data': data})
+class IndexApi(APIView):
+    def get(self, request):
+        movie_count = Movie.objects.count()
+        context = {"count": movie_count}
+        print(movie_count)
+        return Response(status=200, data=context)
 
+
+def index_view(request):
+    return render(request, 'index.html')
+
+def admin_panel(request):
+    return render(request, 'admin-panel.html')
 
 def daily_kino(request):
     return render(request, "daykino.html")

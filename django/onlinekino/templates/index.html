@@ -97,8 +97,10 @@
       </div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Featured Movies</a>
-	        <span class="navbar-brand">Количество фильмов: {{ data.count }}</span>
+            <div id = "genres-container">
+
+            </div>
+	        <span class="navbar-brand" style = "margin-left: 20px">Количество фильмов: <span id="count-span"></span></span>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -123,47 +125,7 @@
           </form>
         </div>
       </nav>
-      <div id = "content-2" class="mx-5">
-        <div id="cinema" class="my-3 mx-xxl-5">
-          <table cellspacing="0" cell width="100%">
-            <tbody><tr><td>
-                <table cellspacing="0" cellpadding="0" width="100%" class="table_films">
-                    <tbody><tr>
-                        <td width="25%" valign="top" id="newPoster_1" class = "td_films"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1398035/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/e5585990-b8c5-461a-a2f3-c4e9fd637b76/120" width="120" alt="Descarrilados" class="main films_info" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1398035/posters/" class="all">Descarrilados</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_2"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/4517646/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/73102932-b623-4b11-8df0-f807e9722a05/120" width="120" alt="Мы — монстры&nbsp;2 (Monster Family 2)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/4517646/posters/" class="all">Мы — монстры&nbsp;2</a><br><span class = "span_name">Monster Family 2</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_3"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1412501/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/813c7e81-9a28-4928-b21a-833495342115/120" width="120" alt="Медиум (Rang Zong)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1412501/posters/" class="all">Медиум</a><br><span class="span_name">Rang Zong</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_4"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1437940/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/619acf5a-6426-4ee4-af71-a71ada62cc90/120" width="120" alt="Налётчики (Braqueurs)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1437940/posters/" class="all">Налётчики</a><br><span class="span_name">Braqueurs</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_4"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1437940/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/619acf5a-6426-4ee4-af71-a71ada62cc90/120" width="120" alt="Налётчики (Braqueurs)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1437940/posters/" class="all">Налётчики</a><br><span class="span_name">Braqueurs</span></td></tr></tbody></table></td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr>
-                        <td width="25%" valign="top" id="newPoster_5" class = "td_films"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1254069/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/aff27fe2-aaef-4f27-809d-b16fd8de6e44/120" width="120" alt="Соколиный Глаз (Hawkeye)" class="main films_info" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1254069/posters/" class="all">Соколиный Глаз</a><br><span class="span_name">Hawkeye</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_6"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1404050/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/16742f41-5e5b-4514-9899-ff79447d353c/120" width="120" alt="Érase una vez... Euskadi" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1404050/posters/" class="all">Érase una vez... Euskadi</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_7"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1437391/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/e9144448-be62-4391-bd10-d6a441b3d4c9/120" width="120" alt="Fuimos canciones" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1437391/posters/" class="all">Fuimos canciones</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_8"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1192694/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/258479bd-9de7-4bb9-8d75-b59481566754/120" width="120" alt="Do, Re &amp; Mi" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1192694/posters/" class="all">Do, Re &amp; Mi</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_8"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1192694/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/258479bd-9de7-4bb9-8d75-b59481566754/120" width="120" alt="Do, Re &amp; Mi" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1192694/posters/" class="all">Do, Re &amp; Mi</a></td></tr></tbody></table></td>
-                    </tr>
-                    <tbody><tr>
-                        <td width="25%" valign="top" id="newPoster_1" class = "td_films"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1398035/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/e5585990-b8c5-461a-a2f3-c4e9fd637b76/120" width="120" alt="Descarrilados" class="main films_info" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1398035/posters/" class="all">Descarrilados</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_2"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/4517646/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/73102932-b623-4b11-8df0-f807e9722a05/120" width="120" alt="Мы — монстры&nbsp;2 (Monster Family 2)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/4517646/posters/" class="all">Мы — монстры&nbsp;2</a><br><span class = "span_name">Monster Family 2</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_3"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1412501/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/813c7e81-9a28-4928-b21a-833495342115/120" width="120" alt="Медиум (Rang Zong)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1412501/posters/" class="all">Медиум</a><br><span class="span_name">Rang Zong</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_4"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1437940/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/619acf5a-6426-4ee4-af71-a71ada62cc90/120" width="120" alt="Налётчики (Braqueurs)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1437940/posters/" class="all">Налётчики</a><br><span class="span_name">Braqueurs</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_4"><table class="movie-item__table" cellspacing="0" cellpadding="0" width="100%"><tbody><tr><td><a href="/film/1437940/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/619acf5a-6426-4ee4-af71-a71ada62cc90/120" width="120" alt="Налётчики (Braqueurs)" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1437940/posters/" class="all">Налётчики</a><br><span class="span_name">Braqueurs</span></td></tr></tbody></table></td>
-                    </tr>
-                    <tr><td></td></tr>
-                    <tr>
-                        <td width="25%" valign="top" id="newPoster_5" class = "td_films"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1254069/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/aff27fe2-aaef-4f27-809d-b16fd8de6e44/120" width="120" alt="Соколиный Глаз (Hawkeye)" class="main films_info" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1254069/posters/" class="all">Соколиный Глаз</a><br><span class="span_name">Hawkeye</span></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_6"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1404050/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/16742f41-5e5b-4514-9899-ff79447d353c/120" width="120" alt="Érase una vez... Euskadi" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1404050/posters/" class="all">Érase una vez... Euskadi</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_7"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1437391/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/e9144448-be62-4391-bd10-d6a441b3d4c9/120" width="120" alt="Fuimos canciones" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1437391/posters/" class="all">Fuimos canciones</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_8"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1192694/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/258479bd-9de7-4bb9-8d75-b59481566754/120" width="120" alt="Do, Re &amp; Mi" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1192694/posters/" class="all">Do, Re &amp; Mi</a></td></tr></tbody></table></td>
-                        <td width="25%" valign="top" id="newPoster_8"><table class="movie-item__table" cellspacing="0"  width="100%"><tbody><tr><td><a href="/film/1192694/posters/"><img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/258479bd-9de7-4bb9-8d75-b59481566754/120" width="120" alt="Do, Re &amp; Mi" class="main" hspace="5"></a></td></tr><tr><td height="3"></td></tr><tr class="movie-item__info"><td><a href="/film/1192694/posters/" class="all">Do, Re &amp; Mi</a></td></tr></tbody></table></td>
-                    </tr>
-                    <tr><td colspan="4"></td></tr>
-                </tbody></table>
-            </td></tr>
-            </tbody></table>
-        </div>
-      </div>
+
       <footer class="footer">
         <table>
           <thead>
@@ -199,7 +161,49 @@
           </thead>
         </table>
       </footer>
-      <script src="script.js"></script>
+      <script>
+
+
+            window.addEventListener('load', function () {
+              const url = 'http://127.0.0.1:8000/api/genres/';
+              let headers = {
+                  'Content-Type': 'application/json'
+              }
+              let option = {
+                  method: 'GET',
+                  headers: headers
+              };
+              fetch(url, option)
+                  .then(response => response.json())
+                  .then(result => {
+                      console.log(result)
+                      for (let n = 0; n < result.length; n++) {
+                          div = document.getElementById("genres-container")
+                          li = document.createElement("li")
+                          div.appendChild(li)
+                          li.innerText = result[n].name
+                      }
+                  })
+          })
+
+            window.addEventListener('load', function () {
+              const url = 'http://127.0.0.1:8000/api/count/';
+              let headers = {
+                  'Content-Type': 'application/json'
+              }
+              let option = {
+                  method: 'GET',
+                  headers: headers
+              };
+              fetch(url, option)
+                  .then(response => response.json())
+                  .then(result => {
+                      console.log(result)
+                      document.getElementById("count-span").innerText = result.count;
+                  })
+          })
+
+      </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 </body>
 </html>
