@@ -27,3 +27,10 @@ class GenreSerializer(serializers.ModelSerializer):
         model = Genre
         fields = "__all__"
 
+
+class YearFilter(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = ("release_date", "title")
+

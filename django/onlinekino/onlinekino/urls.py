@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from movies.urls import movie_urlpatterns
+from movies.urls import def_urlpatterns
 
 
 urlpatterns = [
@@ -25,5 +25,5 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
 ]
 
-urlpatterns += movie_urlpatterns
+urlpatterns += def_urlpatterns
 

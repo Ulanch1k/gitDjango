@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -9,14 +10,12 @@ from rest_framework import status, permissions
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin, DestroyModelMixin, UpdateModelMixin
 from rest_framework.generics import GenericAPIView
 from django.db.models import Count
+from rest_framework.viewsets import GenericViewSet
 
-
-
-from .serializers import MovieSerializer, MovieDetailSerializer, GenreSerializer
+from .serializers import MovieSerializer, MovieDetailSerializer, GenreSerializer, YearFilter
 from .models import Movie, Genre
 
 # Create your views here.
-
 
 class GenreView(GenericAPIView, ListModelMixin, CreateModelMixin, DestroyModelMixin):
     queryset = Genre.objects.all()
@@ -60,7 +59,6 @@ class MovieView(GenericAPIView, ListModelMixin, CreateModelMixin):
         return super().create(request)
 
 
-
 class MoviesDetailView(GenericAPIView, RetrieveModelMixin, DestroyModelMixin, UpdateModelMixin):
     queryset = Movie.objects.all()
     serializer_class = MovieDetailSerializer
@@ -83,12 +81,27 @@ class IndexApi(APIView):
     def get(self, request):
         movie_count = Movie.objects.count()
         context = {"count": movie_count}
-        print(movie_count)
         return Response(status=200, data=context)
+
+
+
+class YearFilterApi(GenericAPIView, ListModelMixin, CreateModelMixin, DestroyModelMixin):
+    queryset = Genre.objects.all().order_by('id')
+    serializer_class = YearFilter
+    permission_classes = (AllowAny, )
+
+    def get(self, request):
+        return super().list(request)
+
+    def post(self, request):
+        return super().create(request)
 
 
 def index_view(request):
     return render(request, 'index.html')
+
+def login(request):
+    return render(request, 'login.html')
 
 def admin_panel(request):
     return render(request, 'admin-panel.html')

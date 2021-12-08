@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Genre(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a movie genre")
 
@@ -19,3 +21,6 @@ class Movie(models.Model):
     rating = models.FloatField()
     release_date = models.DateField(auto_now=True)
     genre = models.ManyToManyField(Genre, default='Фильм')
+
+    class Meta:
+        ordering = ('release_date', )
